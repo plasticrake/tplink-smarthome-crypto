@@ -1,0 +1,95 @@
+# tplink-smarthome-crypto
+[![NPM Version](https://img.shields.io/npm/v/tplink-smarthome-crypto-api.svg)](https://www.npmjs.com/package/tplink-smarthome-crypto)
+[![Build Status](https://travis-ci.org/plasticrake/tplink-smarthome-crypto.svg?branch=master)](https://travis-ci.org/plasticrake/tplink-smarthome-crypto)
+[![codecov](https://codecov.io/gh/plasticrake/tplink-smarthome-crypto/branch/master/graph/badge.svg)](https://codecov.io/gh/plasticrake/tplink-smarthome-crypto)
+[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
+
+TP-Link Smarthome Crypto
+
+## Supported Devices
+
+| Model                      | Type |
+|----------------------------|------|
+| HS100, HS105, HS110, HS200 | Plug |
+| LB100, LB110, LB120, LB130 | Bulb |
+
+## Examples
+
+- [TP-Link Smarthome API](https://github.com/plasticrake/hs100-api)
+- [TP-Link Smarthome Simulator](https://github.com/plasticrake/tplink-smarthome-simulator)
+
+## API
+
+<a name="module_tplink-crypto"></a>
+
+## tplink-crypto
+TP-Link device crypto.
+
+TCP communication includes a 4 byte header, UDP does not.
+
+
+* [tplink-crypto](#module_tplink-crypto)
+    * [.encrypt(input, [firstKey])](#module_tplink-crypto.encrypt) ⇒ <code>Buffer</code>
+    * [.encryptWithHeader(input, [firstKey])](#module_tplink-crypto.encryptWithHeader) ⇒ <code>Buffer</code>
+    * [.decrypt(input, [firstKey])](#module_tplink-crypto.decrypt) ⇒ <code>Buffer</code>
+    * [.decryptWithHeader(input, [firstKey])](#module_tplink-crypto.decryptWithHeader) ⇒ <code>Buffer</code>
+
+<a name="module_tplink-crypto.encrypt"></a>
+
+### tplink-crypto.encrypt(input, [firstKey]) ⇒ <code>Buffer</code>
+Encrypts input where each byte is XOR'd with the previous encrypted byte.
+
+**Kind**: static method of [<code>tplink-crypto</code>](#module_tplink-crypto)  
+**Returns**: <code>Buffer</code> - encrypted buffer  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| input | <code>Buffer</code> \| <code>string</code> |  | Buffer/string to encrypt |
+| [firstKey] | <code>number</code> | <code>0xAB</code> |  |
+
+<a name="module_tplink-crypto.encryptWithHeader"></a>
+
+### tplink-crypto.encryptWithHeader(input, [firstKey]) ⇒ <code>Buffer</code>
+Encrypts input that has a 4 byte big-endian length header;
+each byte is XOR'd with the previous encrypted byte.
+
+**Kind**: static method of [<code>tplink-crypto</code>](#module_tplink-crypto)  
+**Returns**: <code>Buffer</code> - encrypted buffer with header  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| input | <code>Buffer</code> \| <code>string</code> |  | Buffer/string to encrypt |
+| [firstKey] | <code>number</code> | <code>0xAB</code> |  |
+
+<a name="module_tplink-crypto.decrypt"></a>
+
+### tplink-crypto.decrypt(input, [firstKey]) ⇒ <code>Buffer</code>
+Decrypts input where each byte is XOR'd with the previous encrypted byte.
+
+**Kind**: static method of [<code>tplink-crypto</code>](#module_tplink-crypto)  
+**Returns**: <code>Buffer</code> - decrypted buffer  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| input | <code>Buffer</code> |  | encrypted Buffer |
+| [firstKey] | <code>number</code> | <code>0xAB</code> |  |
+
+<a name="module_tplink-crypto.decryptWithHeader"></a>
+
+### tplink-crypto.decryptWithHeader(input, [firstKey]) ⇒ <code>Buffer</code>
+Decrypts input that has a 4 bype big-endian length header;
+each byte is XOR'd with the previous encrypted byte
+
+**Kind**: static method of [<code>tplink-crypto</code>](#module_tplink-crypto)  
+**Returns**: <code>Buffer</code> - decrypted buffer  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| input | <code>Buffer</code> |  | encrypted Buffer with header |
+| [firstKey] | <code>number</code> | <code>0xAB</code> |  |
+
+
+
+## Credits
+Thanks to George Georgovassilis and Thomas Baust for figuring out the HS1XX encryption.
+https://georgovassilis.blogspot.com/2016/05/controlling-tp-link-hs100-wi-fi-smart.html

@@ -5,7 +5,7 @@
 const chai = require('chai');
 const expect = chai.expect;
 
-const tplinkCrypto = require('../src/tplink-crypto');
+const tplinkCrypto = require('../lib/');
 const encrypt = tplinkCrypto.encrypt;
 const encryptWithHeader = tplinkCrypto.encryptWithHeader;
 const decrypt = tplinkCrypto.decrypt;
@@ -41,21 +41,21 @@ var payloads = {
 
 describe('tplink-crypto', () => {
   Object.keys(payloads).forEach((plKey) => {
-    describe('#decrypt', () => {
+    describe('decrypt', () => {
       it(`should decrypt ${plKey} payload (Buffer)`, () => {
         let buf = Buffer.from(payloads[plKey].encrypted, 'base64');
         expect(decrypt(buf).toString('utf8')).to.eql(payloads[plKey].plain);
       });
     });
 
-    describe('#decryptWithHeader', () => {
+    describe('decryptWithHeader', () => {
       it(`should decrypt ${plKey} payload (Buffer)`, () => {
         let buf = Buffer.from(payloads[plKey].encryptedWithHeader, 'base64');
         expect(decryptWithHeader(buf).toString('utf8')).to.eql(payloads[plKey].plain);
       });
     });
 
-    describe('#encrypt', () => {
+    describe('encrypt', () => {
       it(`should encrypt ${plKey} payload (string)`, () => {
         let buf = encrypt(payloads[plKey].plain);
         expect(buf).to.eql(Buffer.from(payloads[plKey].encrypted, 'base64'));
@@ -66,7 +66,7 @@ describe('tplink-crypto', () => {
       });
     });
 
-    describe('#encryptWithHeader', () => {
+    describe('encryptWithHeader', () => {
       it(`should encrypt ${plKey} payload (string)`, () => {
         let buf = encryptWithHeader(payloads[plKey].plain);
         expect(buf.toString('base64')).to.eql(payloads[plKey].encryptedWithHeader);
@@ -77,7 +77,7 @@ describe('tplink-crypto', () => {
       });
     });
 
-    describe('#encrypt and #decrypt', function () {
+    describe('encrypt <-> decrypt', function () {
       it(`should encrypt ${plKey} payload and decrypt back to original (string)`, () => {
         let orig = payloads[plKey].plain;
         expect(decrypt(encrypt(orig)).toString('utf8')).to.eql(orig);
