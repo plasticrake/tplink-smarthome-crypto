@@ -20,26 +20,26 @@ TP-Link Smarthome Crypto
 
 ## API
 
-<a name="module_tplink-crypto"></a>
+<a name="module_tplink-smarthome-crypto"></a>
 
-## tplink-crypto
-TP-Link device crypto.
+## tplink-smarthome-crypto
+TP-Link Smarthome Crypto
 
 TCP communication includes a 4 byte header, UDP does not.
 
 
-* [tplink-crypto](#module_tplink-crypto)
-    * [.encrypt(input, [firstKey])](#module_tplink-crypto.encrypt) ⇒ <code>Buffer</code>
-    * [.encryptWithHeader(input, [firstKey])](#module_tplink-crypto.encryptWithHeader) ⇒ <code>Buffer</code>
-    * [.decrypt(input, [firstKey])](#module_tplink-crypto.decrypt) ⇒ <code>Buffer</code>
-    * [.decryptWithHeader(input, [firstKey])](#module_tplink-crypto.decryptWithHeader) ⇒ <code>Buffer</code>
+* [tplink-smarthome-crypto](#module_tplink-smarthome-crypto)
+    * [.encrypt(input, [firstKey])](#module_tplink-smarthome-crypto.encrypt) ⇒ <code>Buffer</code>
+    * [.encryptWithHeader(input, [firstKey])](#module_tplink-smarthome-crypto.encryptWithHeader) ⇒ <code>Buffer</code>
+    * [.decrypt(input, [firstKey])](#module_tplink-smarthome-crypto.decrypt) ⇒ <code>Buffer</code>
+    * [.decryptWithHeader(input, [firstKey])](#module_tplink-smarthome-crypto.decryptWithHeader) ⇒ <code>Buffer</code>
 
-<a name="module_tplink-crypto.encrypt"></a>
+<a name="module_tplink-smarthome-crypto.encrypt"></a>
 
-### tplink-crypto.encrypt(input, [firstKey]) ⇒ <code>Buffer</code>
+### tplink-smarthome-crypto.encrypt(input, [firstKey]) ⇒ <code>Buffer</code>
 Encrypts input where each byte is XOR'd with the previous encrypted byte.
 
-**Kind**: static method of [<code>tplink-crypto</code>](#module_tplink-crypto)  
+**Kind**: static method of [<code>tplink-smarthome-crypto</code>](#module_tplink-smarthome-crypto)  
 **Returns**: <code>Buffer</code> - encrypted buffer  
 
 | Param | Type | Default | Description |
@@ -47,13 +47,13 @@ Encrypts input where each byte is XOR'd with the previous encrypted byte.
 | input | <code>Buffer</code> \| <code>string</code> |  | Buffer/string to encrypt |
 | [firstKey] | <code>number</code> | <code>0xAB</code> |  |
 
-<a name="module_tplink-crypto.encryptWithHeader"></a>
+<a name="module_tplink-smarthome-crypto.encryptWithHeader"></a>
 
-### tplink-crypto.encryptWithHeader(input, [firstKey]) ⇒ <code>Buffer</code>
+### tplink-smarthome-crypto.encryptWithHeader(input, [firstKey]) ⇒ <code>Buffer</code>
 Encrypts input that has a 4 byte big-endian length header;
 each byte is XOR'd with the previous encrypted byte.
 
-**Kind**: static method of [<code>tplink-crypto</code>](#module_tplink-crypto)  
+**Kind**: static method of [<code>tplink-smarthome-crypto</code>](#module_tplink-smarthome-crypto)  
 **Returns**: <code>Buffer</code> - encrypted buffer with header  
 
 | Param | Type | Default | Description |
@@ -61,12 +61,12 @@ each byte is XOR'd with the previous encrypted byte.
 | input | <code>Buffer</code> \| <code>string</code> |  | Buffer/string to encrypt |
 | [firstKey] | <code>number</code> | <code>0xAB</code> |  |
 
-<a name="module_tplink-crypto.decrypt"></a>
+<a name="module_tplink-smarthome-crypto.decrypt"></a>
 
-### tplink-crypto.decrypt(input, [firstKey]) ⇒ <code>Buffer</code>
+### tplink-smarthome-crypto.decrypt(input, [firstKey]) ⇒ <code>Buffer</code>
 Decrypts input where each byte is XOR'd with the previous encrypted byte.
 
-**Kind**: static method of [<code>tplink-crypto</code>](#module_tplink-crypto)  
+**Kind**: static method of [<code>tplink-smarthome-crypto</code>](#module_tplink-smarthome-crypto)  
 **Returns**: <code>Buffer</code> - decrypted buffer  
 
 | Param | Type | Default | Description |
@@ -74,13 +74,13 @@ Decrypts input where each byte is XOR'd with the previous encrypted byte.
 | input | <code>Buffer</code> |  | encrypted Buffer |
 | [firstKey] | <code>number</code> | <code>0xAB</code> |  |
 
-<a name="module_tplink-crypto.decryptWithHeader"></a>
+<a name="module_tplink-smarthome-crypto.decryptWithHeader"></a>
 
-### tplink-crypto.decryptWithHeader(input, [firstKey]) ⇒ <code>Buffer</code>
+### tplink-smarthome-crypto.decryptWithHeader(input, [firstKey]) ⇒ <code>Buffer</code>
 Decrypts input that has a 4 bype big-endian length header;
 each byte is XOR'd with the previous encrypted byte
 
-**Kind**: static method of [<code>tplink-crypto</code>](#module_tplink-crypto)  
+**Kind**: static method of [<code>tplink-smarthome-crypto</code>](#module_tplink-smarthome-crypto)  
 **Returns**: <code>Buffer</code> - decrypted buffer  
 
 | Param | Type | Default | Description |
