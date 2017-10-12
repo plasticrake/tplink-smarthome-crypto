@@ -1,5 +1,5 @@
 # tplink-smarthome-crypto
-[![NPM Version](https://img.shields.io/npm/v/tplink-smarthome-crypto-api.svg)](https://www.npmjs.com/package/tplink-smarthome-crypto)
+[![NPM Version](https://img.shields.io/npm/v/tplink-smarthome-crypto.svg)](https://www.npmjs.com/package/tplink-smarthome-crypto)
 [![Build Status](https://travis-ci.org/plasticrake/tplink-smarthome-crypto.svg?branch=master)](https://travis-ci.org/plasticrake/tplink-smarthome-crypto)
 [![codecov](https://codecov.io/gh/plasticrake/tplink-smarthome-crypto/branch/master/graph/badge.svg)](https://codecov.io/gh/plasticrake/tplink-smarthome-crypto)
 [![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
