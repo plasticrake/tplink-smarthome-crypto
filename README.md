@@ -1,4 +1,5 @@
 # tplink-smarthome-crypto
+
 [![NPM Version](https://img.shields.io/npm/v/tplink-smarthome-crypto.svg)](https://www.npmjs.com/package/tplink-smarthome-crypto)
 [![Build Status](https://travis-ci.org/plasticrake/tplink-smarthome-crypto.svg?branch=master)](https://travis-ci.org/plasticrake/tplink-smarthome-crypto)
 [![codecov](https://codecov.io/gh/plasticrake/tplink-smarthome-crypto/branch/master/graph/badge.svg)](https://codecov.io/gh/plasticrake/tplink-smarthome-crypto)
@@ -8,15 +9,17 @@ TP-Link Smarthome Crypto
 
 ## Supported Devices
 
-| Model                      | Type |
-|----------------------------|------|
-| HS100, HS105, HS110, HS200 | Plug |
-| LB100, LB110, LB120, LB130 | Bulb |
+| Model                                     | Type |
+|-------------------------------------------|------|
+| HS100, HS105, HS107, HS110,<br/>HS200, HS210, HS220, HS300 | Plug |
+| LB100, LB110, LB120, LB130, LB200, LB230  | Bulb |
 
-## Examples
+## Related Projects
 
-- [TP-Link Smarthome API](https://github.com/plasticrake/hs100-api)
-- [TP-Link Smarthome Simulator](https://github.com/plasticrake/tplink-smarthome-simulator)
+* [TP-Link Smarthome API](https://github.com/plasticrake/tplink-smarthome-api)
+* [TP-Link Smarthome Device Simulator](https://github.com/plasticrake/tplink-smarthome-simulator) - Useful for automated testing
+* [TP-Link Smarthome Crypto](https://github.com/plasticrake/tplink-smarthome-crypto)
+* [TP-Link Smarthome Homebridge Plugin](https://github.com/plasticrake/homebridge-tplink-smarthome)
 
 ## API
 
@@ -91,5 +94,5 @@ each byte is XOR'd with the previous encrypted byte
 
 
 ## Credits
-Thanks to George Georgovassilis and Thomas Baust for figuring out the HS1XX encryption.
-https://georgovassilis.blogspot.com/2016/05/controlling-tp-link-hs100-wi-fi-smart.html
+
+Thanks to George Georgovassilis and Thomas Baust for [figuring out the HS1XX encryption](https://blog.georgovassilis.com/2016/05/07/controlling-the-tp-link-hs100-wi-fi-smart-plug/).
