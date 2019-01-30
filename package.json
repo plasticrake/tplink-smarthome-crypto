@@ -37,7 +37,10 @@
     "coverage": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov",
     "docs": "jsdoc2md --template=jsdoc2md/README.hbs lib/**.js > README.md",
     "test": "semistandard && nyc mocha",
+    "prerelease": "npm test && npm run docs",
+    "release": "git add -A README.md && standard-version --sign --commit-all",
     "preversion": "npm test",
+    "version": "npm run docs && git add -A README.md",
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
@@ -46,7 +49,8 @@
     "jsdoc-to-markdown": "^4.0.1",
     "mocha": "^5.2.0",
     "nyc": "^13.1.0",
-    "semistandard": "^13.0.1"
+    "semistandard": "^13.0.1",
+    "standard-version": "^4.4.0"
   },
   "engines": {
     "node": ">=6.0.0"
