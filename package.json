@@ -26,22 +26,22 @@
   "bugs": {
     "url": "https://github.com/plasticrake/tplink-smarthome-crypto/issues"
   },
-  "license": "MIT",
-  "author": "Patrick Seal",
-  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/plasticrake/tplink-smarthome-crypto.git"
   },
+  "license": "MIT",
+  "author": "Patrick Seal",
+  "main": "lib/index.js",
   "scripts": {
-    "report-coverage": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov",
     "docs": "jsdoc2md --template=jsdoc2md/README.hbs lib/**.js > README.md",
     "lint": "eslint --ignore-path .gitignore .",
+    "prerelease": "npm test && npm run docs",
+    "release": "git add -A README.md && standard-version --sign --commit-all",
+    "report-coverage": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov",
     "pretest": "npm run lint",
     "test": "nyc mocha",
     "test-ci": "nyc mocha",
-    "prerelease": "npm test && npm run docs",
-    "release": "git add -A README.md && standard-version --sign --commit-all",
     "preversion": "npm test",
     "version": "npm run docs && git add -A README.md",
     "postversion": "git push && git push --tags"
