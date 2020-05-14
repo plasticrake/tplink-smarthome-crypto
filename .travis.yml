@@ -14,4 +14,4 @@ jobs:
       node_js: 'lts/*'
       script:
         - npm run lint
-      after_success:
+      after_success: false
