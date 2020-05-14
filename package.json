@@ -36,7 +36,9 @@
   "scripts": {
     "coverage": "nyc report --reporter=text-lcov > coverage/coverage.lcov && codecov",
     "docs": "jsdoc2md --template=jsdoc2md/README.hbs lib/**.js > README.md",
-    "test": "semistandard && nyc mocha",
+    "lint": "eslint --ignore-path .gitignore .",
+    "pretest": "npm run lint",
+    "test": "nyc mocha",
     "prerelease": "npm test && npm run docs",
     "release": "git add -A README.md && standard-version --sign --commit-all",
     "preversion": "npm test",
@@ -46,10 +48,15 @@
   "devDependencies": {
     "chai": "^4.2.0",
     "codecov": "^3.6.5",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-prettier": "^3.1.3",
     "jsdoc-to-markdown": "^5.0.3",
     "mocha": "^7.1.2",
     "nyc": "^15.0.1",
-    "semistandard": "^13.0.1",
+    "prettier": "^2.0.5",
     "standard-version": "^8.0.0"
   },
   "engines": {
