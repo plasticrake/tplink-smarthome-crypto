@@ -1,3 +1,4 @@
 {
-  "temp-dir": "./coverage/.nyc_output"
+  "extends": "@istanbuljs/nyc-config-typescript",
+  "all": true
 }
