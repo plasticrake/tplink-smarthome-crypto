@@ -2,16 +2,16 @@
  * TP-Link Smarthome Crypto
  *
  * TCP communication includes a 4 byte header, UDP does not.
- * @module tplink-smarthome-crypto
  */
+
 /**
  * Encrypts input where each byte is XOR'd with the previous encrypted byte.
- * @alias  module:tplink-smarthome-crypto.encrypt
- * @param  {(Buffer|string)} input           Buffer/string to encrypt
- * @param  {number} [firstKey=0xAB]
- * @return {Buffer}                 encrypted buffer
+ *
+ * @param input - Data to encrypt
+ * @param firstKey
+ * @returns encrypted buffer
  */
-function encrypt(input, firstKey = 0xab) {
+export function encrypt(input: Buffer | string, firstKey = 0xab): Buffer {
   const buf = Buffer.from(input);
   let key = firstKey;
   for (let i = 0; i < buf.length; i += 1) {
@@ -24,12 +24,15 @@ function encrypt(input, firstKey = 0xab) {
 /**
  * Encrypts input that has a 4 byte big-endian length header;
  * each byte is XOR'd with the previous encrypted byte.
- * @alias  module:tplink-smarthome-crypto.encryptWithHeader
- * @param  {(Buffer|string)} input           Buffer/string to encrypt
- * @param  {number} [firstKey=0xAB]
- * @return {Buffer}                 encrypted buffer with header
+ *
+ * @param input - Data to encrypt
+ * @param firstKey
+ * @returns encrypted buffer with header
  */
-function encryptWithHeader(input, firstKey = 0xab) {
+export function encryptWithHeader(
+  input: Buffer | string,
+  firstKey = 0xab
+): Buffer {
   const msgBuf = encrypt(input, firstKey);
   const outBuf = Buffer.alloc(msgBuf.length + 4);
   outBuf.writeUInt32BE(msgBuf.length, 0);
@@ -38,12 +41,12 @@ function encryptWithHeader(input, firstKey = 0xab) {
 }
 /**
  * Decrypts input where each byte is XOR'd with the previous encrypted byte.
- * @alias  module:tplink-smarthome-crypto.decrypt
- * @param  {Buffer} input           encrypted Buffer
- * @param  {number} [firstKey=0xAB]
- * @return {Buffer}                 decrypted buffer
+ *
+ * @param input - encrypted Buffer
+ * @param firstKey
+ * @returns decrypted buffer
  */
-function decrypt(input, firstKey = 0xab) {
+export function decrypt(input: Buffer, firstKey = 0xab): Buffer {
   const buf = Buffer.from(input);
   let key = firstKey;
   let nextKey;
@@ -56,20 +59,13 @@ function decrypt(input, firstKey = 0xab) {
   return buf;
 }
 /**
- * Decrypts input that has a 4 bype big-endian length header;
+ * Decrypts input that has a 4 byte big-endian length header;
  * each byte is XOR'd with the previous encrypted byte
- * @alias  module:tplink-smarthome-crypto.decryptWithHeader
- * @param  {Buffer} input           encrypted Buffer with header
- * @param  {number} [firstKey=0xAB]
- * @return {Buffer}                 decrypted buffer
+ *
+ * @param input - encrypted Buffer with header
+ * @param firstKey
+ * @returns decrypted buffer
  */
-function decryptWithHeader(input, firstKey = 0xab) {
+export function decryptWithHeader(input: Buffer, firstKey = 0xab): Buffer {
   return decrypt(input.slice(4), firstKey);
 }
-
-module.exports = {
-  encrypt,
-  encryptWithHeader,
-  decrypt,
-  decryptWithHeader,
-};
