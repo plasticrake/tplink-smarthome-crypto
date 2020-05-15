@@ -1,17 +1,14 @@
-/* eslint-env mocha */
+import { expect } from 'chai';
 
-const chai = require('chai');
+import { decrypt, decryptWithHeader, encrypt, encryptWithHeader } from '../src';
 
-const { expect } = chai;
+interface TestPayload {
+  plain: string;
+  encryptedBuf: Buffer;
+  encryptedBufWithHeader: Buffer;
+}
 
-const {
-  decrypt,
-  decryptWithHeader,
-  encrypt,
-  encryptWithHeader,
-} = require('../lib');
-
-const payloads = {
+const payloads: { [key: string]: TestPayload } = {
   setPowerStateOn: {
     plain: '{"system":{"set_relay_state":{"state":1}}}',
     encryptedBuf: Buffer.from(
@@ -70,7 +67,21 @@ const payloads = {
   },
 };
 
-const inputs = [
+type FuncName =
+  | 'decrypt'
+  | 'decryptWithHeader'
+  | 'encrypt'
+  | 'encryptWithHeader';
+type SingleTestInput = { expected: unknown };
+
+type TestInput = {
+  name: string;
+  value: unknown;
+  throws?: TypeErrorConstructor;
+  expected?: SingleTestInput;
+} & { [K in FuncName]?: SingleTestInput };
+
+const inputs: TestInput[] = [
   {
     name: 'null',
     value: null,
@@ -120,11 +131,13 @@ const inputs = [
   },
 ];
 
-function setupTest(func, input) {
+function setupTest(func: Function, input: TestInput): void {
   const { name } = input;
   const { value } = input;
   const { throws } = input;
-  const expected = throws || input.expected || input[func.name].expected;
+  const funcName: FuncName = func.name as FuncName;
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  const expected = throws || input.expected || input[funcName]!.expected;
 
   it(`should ${
     throws ? `throw ${throws.name}` : 'return value'
@@ -139,7 +152,7 @@ function setupTest(func, input) {
   });
 }
 
-function setupTests(func, tests) {
+function setupTests(func: Function, tests: TestInput[]): void {
   tests.forEach((test) => {
     setupTest(func, test);
   });
@@ -180,14 +193,10 @@ describe('tplink-crypto', function () {
 
     describe('encrypt', function () {
       it(`should encrypt ${plKey} payload (string)`, function () {
-        expect(encrypt(payload.plain)).to.eql(
-          Buffer.from(payload.encryptedBuf, 'base64')
-        );
+        expect(encrypt(payload.plain)).to.eql(payload.encryptedBuf);
       });
       it(`should encrypt ${plKey} payload (Buffer)`, function () {
-        expect(encrypt(Buffer.from(payload.plain))).to.eql(
-          Buffer.from(payload.encryptedBuf, 'base64')
-        );
+        expect(encrypt(payload.plain)).to.eql(payload.encryptedBuf);
       });
     });
 
