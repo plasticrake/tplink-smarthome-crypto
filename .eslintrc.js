@@ -5,7 +5,7 @@ module.exports = {
     ecmaVersion: 2015,
     project: ['./tsconfig.json', './tsconfig.eslint.json'],
   },
-  plugins: ['@typescript-eslint'],
+  plugins: ['@typescript-eslint', 'eslint-plugin-tsdoc'],
   env: {
     browser: false,
     commonjs: true,
@@ -18,5 +18,8 @@ module.exports = {
     'prettier/@typescript-eslint',
     'plugin:prettier/recommended',
   ],
+  rules: {
+    'tsdoc/syntax': 'warn',
+  },
   reportUnusedDisableDirectives: true,
 };

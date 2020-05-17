@@ -1,7 +1,13 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "outDir": "./lib",
+    "outDir": "./lib"
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*"],
+  "typedocOptions": {
+    "mode": "file",
+    "out": "docs",
+    "plugin": "typedoc-plugin-markdown",
+    "readme": "none"
+  }
 }
