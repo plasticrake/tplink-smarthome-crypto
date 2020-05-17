@@ -5,7 +5,7 @@ node_js:
   - '8'
 cache: npm
 script:
-  - npm run test-ci
+  - npm run test:ci
 after_success:
   - npm run report-coverage
 jobs:

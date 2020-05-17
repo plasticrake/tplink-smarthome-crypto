@@ -2,13 +2,14 @@
  * TP-Link Smarthome Crypto
  *
  * TCP communication includes a 4 byte header, UDP does not.
+ * @packageDocumentation
  */
 
 /**
  * Encrypts input where each byte is XOR'd with the previous encrypted byte.
  *
  * @param input - Data to encrypt
- * @param firstKey
+ * @param firstKey - Value to XOR first byte of input
  * @returns encrypted buffer
  */
 export function encrypt(input: Buffer | string, firstKey = 0xab): Buffer {
@@ -26,7 +27,7 @@ export function encrypt(input: Buffer | string, firstKey = 0xab): Buffer {
  * each byte is XOR'd with the previous encrypted byte.
  *
  * @param input - Data to encrypt
- * @param firstKey
+ * @param firstKey - Value to XOR first byte of input
  * @returns encrypted buffer with header
  */
 export function encryptWithHeader(
@@ -42,8 +43,8 @@ export function encryptWithHeader(
 /**
  * Decrypts input where each byte is XOR'd with the previous encrypted byte.
  *
- * @param input - encrypted Buffer
- * @param firstKey
+ * @param input - Encrypted Buffer
+ * @param firstKey - Value to XOR first byte of input
  * @returns decrypted buffer
  */
 export function decrypt(input: Buffer, firstKey = 0xab): Buffer {
@@ -62,8 +63,8 @@ export function decrypt(input: Buffer, firstKey = 0xab): Buffer {
  * Decrypts input that has a 4 byte big-endian length header;
  * each byte is XOR'd with the previous encrypted byte
  *
- * @param input - encrypted Buffer with header
- * @param firstKey
+ * @param input - Encrypted Buffer with header
+ * @param firstKey - Value to XOR first byte of input
  * @returns decrypted buffer
  */
 export function decryptWithHeader(input: Buffer, firstKey = 0xab): Buffer {
