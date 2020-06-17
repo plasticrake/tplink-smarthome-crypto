@@ -131,7 +131,8 @@ const inputs: TestInput[] = [
   },
 ];
 
-function setupTest(func: Function, input: TestInput): void {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function setupTest(func: (arg0: any) => Buffer, input: TestInput): void {
   const { name } = input;
   const { value } = input;
   const { throws } = input;
@@ -152,7 +153,8 @@ function setupTest(func: Function, input: TestInput): void {
   });
 }
 
-function setupTests(func: Function, tests: TestInput[]): void {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+function setupTests(func: (arg0: any) => Buffer, tests: TestInput[]): void {
   tests.forEach((test) => {
     setupTest(func, test);
   });
