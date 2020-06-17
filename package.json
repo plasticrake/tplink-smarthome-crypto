@@ -29,7 +29,7 @@
     "build": "tsc",
     "clean": "rimraf lib/",
     "docs": "typedoc src",
-    "lint": "eslint --ignore-path .gitignore . --ext .js,.jsx,.ts,.tsx",
+    "lint": "eslint --ignore-path .gitignore . --ext .js,.ts",
     "pretest-ci": "npm run build",
     "prerelease": "npm test && npm run docs",
     "release": "git add -A docs/README.md && standard-version --sign --commit-all",
