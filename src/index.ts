@@ -67,6 +67,6 @@ export function decrypt(input: Buffer, firstKey = 0xab): Buffer {
  * @param firstKey - Value to XOR first byte of input
  * @returns decrypted buffer
  */
-export function decryptWithHeader(input: Buffer, firstKey = 0xab): Buffer {
+  if (input instanceof Buffer) return decrypt(input.subarray(4), firstKey);
   return decrypt(input.slice(4), firstKey);
 }
