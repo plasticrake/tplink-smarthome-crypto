@@ -26,23 +26,22 @@
     "lib"
   ],
   "scripts": {
+    "prebuild": "npm run clean",
     "build": "tsc",
     "clean": "rimraf lib/",
+    "coverage-report-lcov": "nyc report --reporter=lcov",
     "docs": "typedoc src",
-    "lint": "eslint --ignore-path .gitignore . --ext .js,.ts",
+    "lint": "eslint --ignore-path .gitignore . --ext .js,.ts && tsc --noEmit",
+    "prepare": "npm run build",
     "pretest-ci": "npm run build",
     "prerelease": "npm test && npm run docs",
     "release": "git add -A docs/README.md && standard-version --sign --commit-all",
-    "report-coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "spellcheck": "cspell '{src,test}/**/*' *.md",
     "pretest": "npm run lint && npm run build",
     "test": "npm run test:only",
-    "test:only": "nyc mocha",
     "test:ci": "npm run test:only",
-    "preversion": "npm test",
-    "version": "npm run docs && git add -A README.md",
-    "postversion": "git push && git push --tags"
+    "test:only": "cross-env NODE_ENV=test && nyc mocha --color"
   },
-  "dependencies": {},
   "devDependencies": {
     "@istanbuljs/nyc-config-typescript": "^1.0.1",
     "@types/chai": "^4.2.11",
@@ -52,6 +51,7 @@
     "@typescript-eslint/parser": "^3.3.0",
     "chai": "^4.2.0",
     "codecov": "^3.7.0",
+    "cross-env": "^7.0.3",
     "eslint": "^7.2.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-airbnb-typescript": "^8.0.2",
@@ -72,5 +72,11 @@
   },
   "engines": {
     "node": ">=10.0.0"
+  },
+  "standard-version": {
+    "scripts": {
+      "prerelease": "npm test",
+      "postbump": "npm run docs && git add -A docs"
+    }
   }
 }
