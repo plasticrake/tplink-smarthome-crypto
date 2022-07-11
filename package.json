@@ -33,8 +33,6 @@
     "docs": "typedoc",
     "lint": "eslint --ignore-path .gitignore . --ext .js,.ts --format=pretty && tsc --noEmit",
     "prepare": "npm run build",
-    "pretest-ci": "npm run build",
-    "prerelease": "npm test && npm run docs",
     "release": "git add -A docs/README.md && standard-version --sign --commit-all",
     "spellcheck": "cspell '{src,test}/**/*' *.md",
     "pretest": "npm run lint && npm run build",
