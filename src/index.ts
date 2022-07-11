@@ -55,9 +55,8 @@ export function decrypt(
 ): Buffer {
   const buf = Buffer.from(input);
   let key = firstKey;
-  let nextKey;
   for (let i = 0; i < buf.length; i += 1) {
-    nextKey = buf[i];
+    const nextKey = buf[i];
     // eslint-disable-next-line no-bitwise
     buf[i] ^= key;
     key = nextKey;
