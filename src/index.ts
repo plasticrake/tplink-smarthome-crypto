@@ -5,6 +5,8 @@
  * @packageDocumentation
  */
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 /**
  * Encrypts input where each byte is XOR'd with the previous encrypted byte.
  *
@@ -47,7 +49,10 @@ export function encryptWithHeader(
  * @param firstKey - Value to XOR first byte of input
  * @returns decrypted buffer
  */
-export function decrypt(input: Buffer, firstKey = 0xab): Buffer {
+export function decrypt(
+  input: Buffer | string | Array<any>,
+  firstKey = 0xab
+): Buffer {
   const buf = Buffer.from(input);
   let key = firstKey;
   let nextKey;
@@ -67,6 +72,10 @@ export function decrypt(input: Buffer, firstKey = 0xab): Buffer {
  * @param firstKey - Value to XOR first byte of input
  * @returns decrypted buffer
  */
+export function decryptWithHeader(
+  input: Buffer | string | Array<any>,
+  firstKey = 0xab
+): Buffer {
   if (input instanceof Buffer) return decrypt(input.subarray(4), firstKey);
   return decrypt(input.slice(4), firstKey);
 }
