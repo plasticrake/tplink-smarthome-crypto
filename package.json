@@ -30,7 +30,7 @@
     "build": "tsc",
     "clean": "rimraf lib/",
     "coverage-report-lcov": "nyc report --reporter=lcov",
-    "docs": "typedoc src",
+    "docs": "typedoc",
     "lint": "eslint --ignore-path .gitignore . --ext .js,.ts --format=pretty && tsc --noEmit",
     "prepare": "npm run build",
     "pretest-ci": "npm run build",

@@ -1,97 +1,100 @@
-
 # tplink-smarthome-crypto
 
-## Index
+TP-Link Smarthome Crypto
+
+TCP communication includes a 4 byte header, UDP does not.
+
+## Table of contents
 
 ### Functions
 
-* [decrypt](README.md#decrypt)
-* [decryptWithHeader](README.md#decryptwithheader)
-* [encrypt](README.md#encrypt)
-* [encryptWithHeader](README.md#encryptwithheader)
+- [decrypt](README.md#decrypt)
+- [decryptWithHeader](README.md#decryptwithheader)
+- [encrypt](README.md#encrypt)
+- [encryptWithHeader](README.md#encryptwithheader)
 
 ## Functions
 
-###  decrypt
+### decrypt
 
-▸ **decrypt**(`input`: Buffer, `firstKey`: number): *Buffer*
-
-*Defined in [index.ts:50](https://github.com/plasticrake/tplink-smarthome-crypto/blob/8d7c48a/src/index.ts#L50)*
+▸ **decrypt**(`input`, `firstKey?`): `Buffer`
 
 Decrypts input where each byte is XOR'd with the previous encrypted byte.
 
-**Parameters:**
+#### Parameters
 
-Name | Type | Default | Description |
------- | ------ | ------ | ------ |
-`input` | Buffer | - | Encrypted Buffer |
-`firstKey` | number | 171 | Value to XOR first byte of input |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `input` | `string` \| `any`[] \| `Buffer` | `undefined` | Encrypted Buffer |
+| `firstKey` | `number` | `0xab` | Value to XOR first byte of input |
 
-**Returns:** *Buffer*
+#### Returns
+
+`Buffer`
 
 decrypted buffer
 
 ___
 
-###  decryptWithHeader
+### decryptWithHeader
 
-▸ **decryptWithHeader**(`input`: Buffer, `firstKey`: number): *Buffer*
-
-*Defined in [index.ts:70](https://github.com/plasticrake/tplink-smarthome-crypto/blob/8d7c48a/src/index.ts#L70)*
+▸ **decryptWithHeader**(`input`, `firstKey?`): `Buffer`
 
 Decrypts input that has a 4 byte big-endian length header;
 each byte is XOR'd with the previous encrypted byte
 
-**Parameters:**
+#### Parameters
 
-Name | Type | Default | Description |
------- | ------ | ------ | ------ |
-`input` | Buffer | - | Encrypted Buffer with header |
-`firstKey` | number | 171 | Value to XOR first byte of input |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `input` | `string` \| `any`[] \| `Buffer` | `undefined` | Encrypted Buffer with header |
+| `firstKey` | `number` | `0xab` | Value to XOR first byte of input |
 
-**Returns:** *Buffer*
+#### Returns
+
+`Buffer`
 
 decrypted buffer
 
 ___
 
-###  encrypt
+### encrypt
 
-▸ **encrypt**(`input`: Buffer | string, `firstKey`: number): *Buffer*
-
-*Defined in [index.ts:15](https://github.com/plasticrake/tplink-smarthome-crypto/blob/8d7c48a/src/index.ts#L15)*
+▸ **encrypt**(`input`, `firstKey?`): `Buffer`
 
 Encrypts input where each byte is XOR'd with the previous encrypted byte.
 
-**Parameters:**
+#### Parameters
 
-Name | Type | Default | Description |
------- | ------ | ------ | ------ |
-`input` | Buffer &#124; string | - | Data to encrypt |
-`firstKey` | number | 171 | Value to XOR first byte of input |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `input` | `string` \| `Buffer` | `undefined` | Data to encrypt |
+| `firstKey` | `number` | `0xab` | Value to XOR first byte of input |
 
-**Returns:** *Buffer*
+#### Returns
+
+`Buffer`
 
 encrypted buffer
 
 ___
 
-###  encryptWithHeader
+### encryptWithHeader
 
-▸ **encryptWithHeader**(`input`: Buffer | string, `firstKey`: number): *Buffer*
-
-*Defined in [index.ts:33](https://github.com/plasticrake/tplink-smarthome-crypto/blob/8d7c48a/src/index.ts#L33)*
+▸ **encryptWithHeader**(`input`, `firstKey?`): `Buffer`
 
 Encrypts input that has a 4 byte big-endian length header;
 each byte is XOR'd with the previous encrypted byte.
 
-**Parameters:**
+#### Parameters
 
-Name | Type | Default | Description |
------- | ------ | ------ | ------ |
-`input` | Buffer &#124; string | - | Data to encrypt |
-`firstKey` | number | 171 | Value to XOR first byte of input |
+| Name | Type | Default value | Description |
+| :------ | :------ | :------ | :------ |
+| `input` | `string` \| `Buffer` | `undefined` | Data to encrypt |
+| `firstKey` | `number` | `0xab` | Value to XOR first byte of input |
 
-**Returns:** *Buffer*
+#### Returns
+
+`Buffer`
 
 encrypted buffer with header

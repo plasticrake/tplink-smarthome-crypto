@@ -5,9 +5,10 @@
   },
   "include": ["src/**/*"],
   "typedocOptions": {
-    "mode": "file",
+    "entryPoints": ["src/index.ts"],
     "out": "docs",
+    "readme": "none",
     "plugin": "typedoc-plugin-markdown",
-    "readme": "none"
+    "hideBreadcrumbs": true
   }
 }
