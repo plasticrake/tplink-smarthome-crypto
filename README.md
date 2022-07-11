@@ -1,8 +1,9 @@
 # tplink-smarthome-crypto
 
 [![NPM Version](https://img.shields.io/npm/v/tplink-smarthome-crypto.svg)](https://www.npmjs.com/package/tplink-smarthome-crypto)
-[![Build Status](https://travis-ci.org/plasticrake/tplink-smarthome-crypto.svg?branch=master)](https://travis-ci.org/plasticrake/tplink-smarthome-crypto)
-[![codecov](https://codecov.io/gh/plasticrake/tplink-smarthome-crypto/branch/master/graph/badge.svg)](https://codecov.io/gh/plasticrake/tplink-smarthome-crypto)
+[![Build Status](https://github.com/plasticrake/tplink-smarthome-crypto/workflows/CI/badge.svg?branch=master)](https://github.com/plasticrake/tplink-smarthome-crypto/actions?query=workflow%3ACI+branch%3Amaster)
+[![Coverage Status](https://coveralls.io/repos/github/plasticrake/tplink-smarthome-crypto/badge.svg?branch=master)](https://coveralls.io/github/plasticrake/tplink-smarthome-crypto?branch=master)
+[![GitHub Sponsors](https://img.shields.io/github/sponsors/plasticrake)](https://github.com/sponsors/plasticrake)
 
 TP-Link Smarthome Crypto
 
