@@ -1,8 +1,8 @@
 # tplink-smarthome-crypto
 
 [![NPM Version](https://img.shields.io/npm/v/tplink-smarthome-crypto.svg)](https://www.npmjs.com/package/tplink-smarthome-crypto)
-[![Build Status](https://github.com/plasticrake/tplink-smarthome-crypto/workflows/CI/badge.svg?branch=master)](https://github.com/plasticrake/tplink-smarthome-crypto/actions?query=workflow%3ACI+branch%3Amaster)
-[![Coverage Status](https://coveralls.io/repos/github/plasticrake/tplink-smarthome-crypto/badge.svg?branch=master)](https://coveralls.io/github/plasticrake/tplink-smarthome-crypto?branch=master)
+[![Build Status](https://github.com/plasticrake/tplink-smarthome-crypto/workflows/CI/badge.svg?branch=main)](https://github.com/plasticrake/tplink-smarthome-crypto/actions?query=workflow%3ACI+branch%3Amain)
+[![Coverage Status](https://coveralls.io/repos/github/plasticrake/tplink-smarthome-crypto/badge.svg?branch=main)](https://coveralls.io/github/plasticrake/tplink-smarthome-crypto?branch=main)
 [![GitHub Sponsors](https://img.shields.io/github/sponsors/plasticrake)](https://github.com/sponsors/plasticrake)
 
 TP-Link Smarthome Crypto
@@ -20,7 +20,7 @@ Smart plugs/switches such as (HS100, HS200, HSxxx, KPxxx) and smart bulbs (LB100
 
 ## API
 
-Documentation can be found in the [docs folder](https://github.com/plasticrake/tplink-smarthome-crypto/tree/master/docs).
+Documentation can be found in the [docs folder](https://github.com/plasticrake/tplink-smarthome-crypto/tree/main/docs).
 
 ## Credits
 
